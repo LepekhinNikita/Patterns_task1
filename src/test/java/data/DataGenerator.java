@@ -1,4 +1,4 @@
-package ru.netology;
+package data;
 
 
 import lombok.Value;
@@ -15,31 +15,23 @@ public class DataGenerator {
     }
 
     public static String generateDate(int shift) {
-        // TODO: добавить логику для объявления переменной date и задания её значения, для генерации строки с датой
-        // Вы можете использовать класс LocalDate и его методы для получения и форматирования даты
         return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
     public static String generateCity(String locale) {
         Faker faker = new Faker(new Locale(locale));
-        // TODO: добавить логику для объявления переменной city и задания её значения, генерацию можно выполнить
-        // с помощью Faker, либо используя массив валидных городов и класс Rando
         String city = faker.address().cityName();
         return city;
     }
 
     public static String generateName(String locale) {
         Faker faker = new Faker(new Locale(locale));
-        // TODO: добавить логику для объявления переменной name и задания её значения, для генерации можно
-        // использовать Faker
         String name = faker.name().fullName();
         return name;
     }
 
     public static String generatePhone(String locale) {
         Faker faker = new Faker(new Locale(locale));
-        // TODO: добавить логику для объявления переменной phone и задания её значения, для генерации можно
-        // использовать Faker
         String phone = "+7" + faker.phoneNumber().subscriberNumber(10);
         return phone;
     }
@@ -49,8 +41,6 @@ public class DataGenerator {
         }
 
         public static UserInfo generateUser(String locale) {
-            // TODO: добавить логику для создания пользователя user с использованием методов generateCity(locale),
-            // generateName(locale), generatePhone(locale)
             Faker faker = new Faker(new Locale(locale));
             return new UserInfo(generateCity(locale), generateName(locale), generatePhone(locale));
         }
